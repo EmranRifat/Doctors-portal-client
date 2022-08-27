@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const MyAppointment = () => {
@@ -9,17 +9,17 @@ const MyAppointment = () => {
     const [user] = useAuthState(auth);
     const [appointments, setAppointments] = useState([]);
     const navigate = useNavigate();
-
+// console.log(appointments);
     useEffect(() => {
         if (user) {
-            fetch(`https://secret-thicket-89249.herokuapp.com/booking?patient=${user.email}`, {
+            fetch(`http://localhost:5000/booking?patient=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
                 .then(res => {
-                    console.log('res', res);
+                    // console.log('res', res);
                     if (res.status === 401 || res.status === 403) {
                         signOut(auth);
                         localStorage.removeItem('accessToken');
@@ -47,16 +47,24 @@ const MyAppointment = () => {
                             <th>Date</th>
                             <th>Time</th>
                             <th>Treatment</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            appointments.map((a, index) => <tr>
+                            appointments.map((a, index) => 
+            
+                            <tr key={a._id}>
                                 <th>{index + 1}</th>
                                 <td>{a.patientName}</td>
                                 <td>{a.date}</td>
                                 <td>{a.slot}</td>
                                 <td>{a.treatment}</td>
+                                <td>
+                                    {(a.Price && !a.paid)&& <Link to={`/dashboard/appoinment/${a._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link> }
+                                   
+                                    {(a.Price && a.paid)&& <span className='text-success'>Paid</span>}
+                                </td>
                             </tr>)
                         }
 

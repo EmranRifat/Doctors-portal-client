@@ -9,7 +9,7 @@ const useToken = user => {
         const email = user?.user?.email;
         const currentUser = { email: email }
         if (email) {
-            fetch(`https://secret-thicket-89249.herokuapp.com/user/${email}`, {
+            fetch(`http://localhost:5000/user/${email}`, {
                 method: 'PUT',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(currentUser)
@@ -18,7 +18,7 @@ const useToken = user => {
                 .then(data => {
                     console.log('data useToken ', data);
                     const Token = data.token;
-                    localStorage.setToken('accessToken', Token);
+                    localStorage.setItem('accessToken', Token);
                     setToken(Token);
                 })
 

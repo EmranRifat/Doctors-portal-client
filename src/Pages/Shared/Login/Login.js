@@ -36,8 +36,9 @@ const Login = () => {
 
     }, [token, from, navigate])
 
+    
 
-    console.log('token from Login page ', token);
+    // console.log('token from Login page ', token);
 
     if (loading || gLoading) {
         return <Loading> </Loading>;
@@ -49,7 +50,7 @@ const Login = () => {
     }
 
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
         signInWithEmailAndPassword(data.email, data.password)
     }
 

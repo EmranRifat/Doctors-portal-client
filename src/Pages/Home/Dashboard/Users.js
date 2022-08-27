@@ -4,11 +4,12 @@ import Loading from '../../Shared/Loading/Loading';
 import UserRow from '../Dashboard/UserRow'
 
 const Users = () => {
-    const { data: users, isLoading } = useQuery('users', () => fetch('https://secret-thicket-89249.herokuapp.com/user').then(res => res.json()))
+    const { data:users, isLoading, refetch  } = useQuery('users', () => fetch('http://localhost:5000/user').then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
     }
+    console.log(users)
     return (
         <div>
             <h2 className='text-2xl text-center mt-4'>All Users :{users.length}</h2>
@@ -27,7 +28,7 @@ const Users = () => {
                             users.map(user => <UserRow
                                 key={user._id}
                                 user={user}
-
+                                refetch={refetch}
                             ></UserRow>)
                         }
 

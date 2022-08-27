@@ -11,7 +11,7 @@ const AvailableAppointments = ({ date }) => {
     const [treatment, setTreatment] = useState(null);
 
     const formattedDate = format(date, 'PP');
-    const { data: services, isLoading, refetch } = useQuery('available', () => fetch(`https://secret-thicket-89249.herokuapp.com/available?date=${formattedDate} `)
+    const { data: services, isLoading, refetch } = useQuery('available', () => fetch(`http://localhost:5000/available?date=${formattedDate} `)
         .then(res => res.json()))
 
     if (isLoading) {
@@ -22,11 +22,11 @@ const AvailableAppointments = ({ date }) => {
 
 
     // useEffect(() => {
-    //     fetch(`https://secret-thicket-89249.herokuapp.com/available?date=${formattedDate} `)
+    //     fetch(`http://localhost:5000/available?date=${formattedDate} `)
     //         .then(res => res.json())
     //         .then(data => setServices(data));
     // }, [formattedDate])
-    console.log(services);
+    // console.log(services);
 
     return (
         <div className='my-10'>

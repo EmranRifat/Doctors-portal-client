@@ -5,14 +5,14 @@ const DoctorRow = ({ doctor, index }) => {
     return (
         <tr>
             <th>{index + 1}</th>
-            <td><div class="avatar">
-                <div class="w-20 rounded">
+            <td><div className="avatar">
+                <div className="w-20 rounded">
                     <img src={img} />
                 </div>
             </div></td>
             <td>{name}</td>
             <td>{specialty}</td>
-            <td><button class="btn btn-xs btn-error">delete</button>
+            <td><button className="btn btn-xs btn-error">delete</button>
             </td>
         </tr>
 
