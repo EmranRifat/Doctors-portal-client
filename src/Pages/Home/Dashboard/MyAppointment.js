@@ -64,8 +64,8 @@ console.log(appointments);
                                     {(a.Price && !a.paid)&& <Link to={`/dashboard/appoinment/${a._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link> }
                                    
                                     {(a.Price && a.paid)&& <div>
-                                     <p>   <span className='text-success'>Paid</span></p>
-                                        <p>Tnansaction Id:    <span className='text-success'>{a.tansactionId}</span></p>
+                                     <p>   <span className='text-success font-bold'>Paid</span></p>
+                                        <p>Transaction Id:    <span className='text-success'>{a.transactionId}</span></p>
                                        
                            
                                     </div>
