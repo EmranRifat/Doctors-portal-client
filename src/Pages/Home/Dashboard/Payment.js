@@ -8,9 +8,9 @@ import CheckoutForm from "./CheckoutForm";
 
 
 
-const stripePromise = loadStripe('pk_test_51Ie14PF1kwxDH0pWZpPbAfTf7oU4Q9Ng9hp6GAnVwCpSCnizTIbnIzgTSzUo8WW7Yvn200VYawm6UXY94QO0b0KY00ycPUFN5E')
+const stripePromise = loadStripe('pk_test_51LazL5IPyK29dBEPejYaz80Qy16MpOwWcDurBOXfV8rGhnQ2NGCIuSoQvEUjVZUNDAUo8K7j9ZyLyCNID4P0JfiE00OjmVWlSs')
 
-
+console.log(stripePromise);
 const Payment = () => {
   const { id } = useParams();
 
@@ -38,7 +38,7 @@ const Payment = () => {
             <div className="card-body">
           
             <Elements stripe={stripePromise}>
-               <CheckoutForm />
+               <CheckoutForm appointment={appointment}/>
             </Elements> 
             </div>
           </div>

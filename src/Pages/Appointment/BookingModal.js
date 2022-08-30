@@ -5,7 +5,7 @@ import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
 
 
-const BookingModal = ({ _id, date, treatment, setTreatment, refetch }) => {
+const BookingModal = ({_id, date, treatment, setTreatment, refetch }) => {
 
     const [user] = useAuthState(auth);
 
@@ -19,8 +19,7 @@ const BookingModal = ({ _id, date, treatment, setTreatment, refetch }) => {
 
         toast("Your appointment is booked..!");
         const booking = {
-            
-            treatmentId: _id,
+            treatmentId:_id,
             treatment: name,
             date: formattedDate,
             slot,
@@ -30,9 +29,9 @@ const BookingModal = ({ _id, date, treatment, setTreatment, refetch }) => {
             phone: event.target.phone.value
 
         }
-        fetch('http://localhost:5000/booking', {
+        fetch('http://localhost:5000/booking',{
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(booking)
         })
             .then(res => res.json())
@@ -40,9 +39,9 @@ const BookingModal = ({ _id, date, treatment, setTreatment, refetch }) => {
                 if (data.success) {
                     toast(`Appointment is set, ${formattedDate} at ${slot}`)
                 }
-                else {
-                    toast.error(`Already have and appointment on ${data.booking?.date} at ${data.booking?.slot}`)
-                }
+                // else {
+                //     toast.error(`Already have and appointment on ${data.booking?.date} at ${data.booking?.slot}`)
+                // }
                 refetch()
                 setTreatment(null);
             })

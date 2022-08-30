@@ -9,7 +9,7 @@ const MyAppointment = () => {
     const [user] = useAuthState(auth);
     const [appointments, setAppointments] = useState([]);
     const navigate = useNavigate();
-// console.log(appointments);
+console.log(appointments);
     useEffect(() => {
         if (user) {
             fetch(`http://localhost:5000/booking?patient=${user.email}`, {
@@ -52,9 +52,9 @@ const MyAppointment = () => {
                     </thead>
                     <tbody>
                         {
-                            appointments.map((a, index) => 
-            
+                            appointments.map((a, index ) => 
                             <tr key={a._id}>
+                                
                                 <th>{index + 1}</th>
                                 <td>{a.patientName}</td>
                                 <td>{a.date}</td>
@@ -63,7 +63,14 @@ const MyAppointment = () => {
                                 <td>
                                     {(a.Price && !a.paid)&& <Link to={`/dashboard/appoinment/${a._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link> }
                                    
-                                    {(a.Price && a.paid)&& <span className='text-success'>Paid</span>}
+                                    {(a.Price && a.paid)&& <div>
+                                     <p>   <span className='text-success'>Paid</span></p>
+                                        <p>Tnansaction Id:    <span className='text-success'>{a.tansactionId}</span></p>
+                                       
+                           
+                                    </div>
+    
+                                    }
                                 </td>
                             </tr>)
                         }
