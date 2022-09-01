@@ -13,7 +13,9 @@ const Banner = () => {
                     <button className="btn btn-primary uppercase text-white font-bold">Get Started</button>
                 </div>
             </div>
+
         </div>
+        
     );
 };
 

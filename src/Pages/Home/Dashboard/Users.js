@@ -4,7 +4,7 @@ import Loading from '../../Shared/Loading/Loading';
 import UserRow from '../Dashboard/UserRow'
 
 const Users = () => {
-    const { data:users, isLoading, refetch  } = useQuery('users', () => fetch('http://localhost:5000/user').then(res => res.json()))
+    const { data:users, isLoading, refetch  } = useQuery('users', () => fetch('https://cryptic-journey-26812.herokuapp.com/user').then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>

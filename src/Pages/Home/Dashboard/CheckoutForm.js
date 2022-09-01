@@ -15,7 +15,7 @@ const CheckoutForm = ({ appointment }) => {
   const {_id, Price, patient, patientName } = appointment;
   //  console.log(Price);
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://cryptic-journey-26812.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -88,7 +88,7 @@ const CheckoutForm = ({ appointment }) => {
       }
 
 
-      fetch(`http://localhost:5000/booking/${_id}`,{
+      fetch(`https://cryptic-journey-26812.herokuapp.com/booking/${_id}`,{
 
         method: "PATCH",
         headers: {

@@ -15,7 +15,7 @@ const Payment = () => {
   const { id } = useParams();
 
   const { data: appointment, isLoading } = useQuery(["booking", id], () =>
-    fetch(`http://localhost:5000/booking/${id}`).then((res) => res.json())
+    fetch(`https://cryptic-journey-26812.herokuapp.com/booking/${id}`).then((res) => res.json())
   );
 
   if (isLoading) {

@@ -7,7 +7,7 @@ import Loading from '../../Shared/Loading/Loading';
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: services, isLoading } = useQuery('services', () => fetch('http://localhost:5000/service').then(res => res.json()))
+    const { data: services, isLoading } = useQuery('services', () => fetch('https://cryptic-journey-26812.herokuapp.com/service').then(res => res.json()))
 
     const imgStorageKey = '66891e648388c01735d86b75d6397ea8';
 
@@ -40,7 +40,7 @@ const AddDoctor = () => {
                         img: img,
                     }
                     // send to your database
-                    fetch('http://localhost:5000/doctor', {
+                    fetch('https://cryptic-journey-26812.herokuapp.com/doctor', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

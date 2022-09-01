@@ -29,7 +29,7 @@ const BookingModal = ({_id, date, treatment, setTreatment, refetch }) => {
             phone: event.target.phone.value
 
         }
-        fetch('http://localhost:5000/booking',{
+        fetch('https://cryptic-journey-26812.herokuapp.com/booking',{
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(booking)

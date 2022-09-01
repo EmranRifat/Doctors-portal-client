@@ -4,7 +4,7 @@ import DoctorRow from '../Home/Dashboard/DoctorRow';
 import Loading from '../Shared/Loading/Loading';
 
 const ManageDoctor = () => {
-    const { data: doctors, isLoading } = useQuery('doctors', () => fetch('http://localhost:5000/doctor').then(res => res.json()))
+    const { data: doctors, isLoading } = useQuery('doctors', () => fetch('https://cryptic-journey-26812.herokuapp.com/doctor').then(res => res.json()))
     console.log('hello doctor', doctors);
 
     if (isLoading) {
