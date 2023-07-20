@@ -25,7 +25,7 @@ const BookingModal = ({ _id, date, treatment, setTreatment, refetch }) => {
       patientName: user.displayName,
       phone: event.target.phone.value,
     };
-    fetch("http://localhost:5000/booking", {
+    fetch("https://doctors-portal-server-lovat-xi.vercel.app/booking", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(booking),

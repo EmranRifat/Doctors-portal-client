@@ -5,7 +5,9 @@ import Loading from "../Shared/Loading/Loading";
 
 const ManageDoctor = () => {
   const { data: doctors, isLoading } = useQuery("doctors", () =>
-    fetch("http://localhost:5000/doctor").then((res) => res.json())
+    fetch("https://doctors-portal-server-lovat-xi.vercel.app/doctor").then(
+      (res) => res.json()
+    )
   );
   console.log("hello doctor", doctors);
 

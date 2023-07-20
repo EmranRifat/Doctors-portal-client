@@ -13,7 +13,9 @@ const AddDoctor = () => {
   } = useForm();
 
   const { data: services, isLoading } = useQuery("services", () =>
-    fetch("http://localhost:5000/service").then((res) => res.json())
+    fetch("https://doctors-portal-server-lovat-xi.vercel.app/service").then(
+      (res) => res.json()
+    )
   );
 
   const imgStorageKey = "66891e648388c01735d86b75d6397ea8";
@@ -43,7 +45,7 @@ const AddDoctor = () => {
             img: img,
           };
           // send to your database
-          fetch("http://localhost:5000/doctor", {
+          fetch("https://doctors-portal-server-lovat-xi.vercel.app/doctor", {
             method: "POST",
             headers: {
               "content-type": "application/json",

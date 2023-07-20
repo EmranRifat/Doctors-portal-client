@@ -9,7 +9,9 @@ const Users = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("http://localhost:5000/user").then((res) => res.json())
+    fetch("https://doctors-portal-server-lovat-xi.vercel.app/user").then(
+      (res) => res.json()
+    )
   );
 
   if (isLoading) {
