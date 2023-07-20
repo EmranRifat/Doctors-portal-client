@@ -12,10 +12,10 @@ const CheckoutForm = ({ appointment }) => {
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
 
-  const {_id, Price, patient, patientName } = appointment;
+  const { _id, Price, patient, patientName } = appointment;
   //  console.log(Price);
   useEffect(() => {
-    fetch("https://cryptic-journey-26812.herokuapp.com/create-payment-intent", {
+    fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -73,23 +73,19 @@ const CheckoutForm = ({ appointment }) => {
     if (intentError) {
       setCardError(intentError?.message);
       setProcessing(false);
-    } 
-    
-    else {
+    } else {
       setCardError("");
       setTransactionId(paymentIntent.id);
       console.log(paymentIntent);
       setSuccess("Congrats! Your payment is complate.");
-     
+
       // store payment on database
-      const payment={
-        appointment:_id,
-        transactionId:paymentIntent.id
-      }
+      const payment = {
+        appointment: _id,
+        transactionId: paymentIntent.id,
+      };
 
-
-      fetch(`https://cryptic-journey-26812.herokuapp.com/booking/${_id}`,{
-
+      fetch(`http://localhost:5000/booking/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

@@ -11,8 +11,23 @@ const AvailableAppointments = ({ date }) => {
     const [treatment, setTreatment] = useState(null);
 
     const formattedDate = format(date, 'PP');
-    const { data: services, isLoading, refetch } = useQuery('available', () => fetch(`https://cryptic-journey-26812.herokuapp.com/available?date=${formattedDate} `)
-        .then(res => res.json()))
+
+   
+    // const { data: services, isLoading, refetch } = useQuery('available', () => fetch(`http://localhost:5000/available?date=${formattedDate} `)
+    //     .then(res => res.json()))
+       
+       
+        const { data:services = [], refetch, isLoading } = useQuery({
+            queryKey: ['appointmentOptions', formattedDate],
+            queryFn: async () => {
+                const res = await fetch(`http://localhost:5000/available?date=${formattedDate} `);
+                const data = await res.json();
+                return data
+            }
+        });
+  
+        console.log(services);
+
 
     if (isLoading) {
 
@@ -22,7 +37,7 @@ const AvailableAppointments = ({ date }) => {
 
 
     // useEffect(() => {
-    //     fetch(`https://cryptic-journey-26812.herokuapp.com/available?date=${formattedDate} `)
+    //     fetch(`http://localhost:5000/available?date=${formattedDate} `)
     //         .then(res => res.json())
     //         .then(data => setServices(data));
     // }, [formattedDate])
